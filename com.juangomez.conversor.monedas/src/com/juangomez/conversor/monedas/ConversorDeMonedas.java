@@ -1,4 +1,7 @@
+package com.juangomez.conversor.monedas;
+
 import com.google.gson.Gson;
+import com.juangomez.conversor.monedas.service.ConversorMonedaService;
 
 import java.io.IOException;
 import java.net.URI;
@@ -9,31 +12,22 @@ import java.util.Scanner;
 
 public class ConversorDeMonedas {
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) {
 
         Scanner lectura = new Scanner(System.in);
                 System.out.println("Escriba los tres digitos correspondiente a la modeda base:");
         var monedaBase = lectura.nextLine();
         System.out.println("su moneda base es : " + monedaBase);
 
-
-
         System.out.println("Escriba los tres digitos correspondiente a la modeda a cambiar: ");
         var monedaCambio = lectura.nextLine();
         System.out.println("su moneda base es : " + monedaCambio);
 
-        String direccion = "https://v6.exchangerate-api.com/v6/8f9522200c655e6fefc6b3c0/pair/"+monedaBase+"/"+monedaCambio;
 
-
-
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(direccion))
-                .build();
-        HttpResponse<String> response = client
-                .send(request, HttpResponse.BodyHandlers.ofString());
-
-        System.out.println(response.body());
+        System.out.println("Escriba los tres digitos correspondiente a la modeda a cambiar: ");
+        var dinero = Double.parseDouble(lectura.nextLine());
+        final var conversionRate = ConversorMonedaService.getExchangeRate(monedaBase, monedaCambio);
+        System.out.println("su cambio : " + (dinero * conversionRate));
     }
 
 
