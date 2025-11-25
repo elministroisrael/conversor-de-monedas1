@@ -1,3 +1,5 @@
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -8,19 +10,19 @@ import java.util.Scanner;
 public class ConversorDeMonedas {
 
     public static void main(String[] args) throws IOException, InterruptedException {
+
         Scanner lectura = new Scanner(System.in);
                 System.out.println("Escriba los tres digitos correspondiente a la modeda base:");
         var monedaBase = lectura.nextLine();
         System.out.println("su moneda base es : " + monedaBase);
 
 
-        Scanner scanner = new Scanner(System.in);
+
         System.out.println("Escriba los tres digitos correspondiente a la modeda a cambiar: ");
-        var monedaCambio = scanner.nextLine();
+        var monedaCambio = lectura.nextLine();
         System.out.println("su moneda base es : " + monedaCambio);
 
         String direccion = "https://v6.exchangerate-api.com/v6/8f9522200c655e6fefc6b3c0/pair/"+monedaBase+"/"+monedaCambio;
-
 
 
 
