@@ -18,11 +18,13 @@ public class ConversorDeMonedas {
 
       Scanner lectura = new Scanner(System.in);
 
+        String monedaBase="";
+        String monedaCambio="";
+
         int opcion;
 
         do {
-            String monedaBase="";
-            String monedaCambio="";
+
             exibirMenu();
             opcion = lectura.nextInt();
 
@@ -52,10 +54,14 @@ public class ConversorDeMonedas {
                     monedaBase = "COP";
                     monedaCambio = "USD";
                 }
+
                 case 7 -> System.out.println("Saliendo del programa. ¡Gracias por usar el conversor!");
                 default -> System.out.println("Opción inválida. Intente nuevamente.");
 
 
+            }
+            if (opcion == 7) {
+                break; // rompe el bucle y no pide más datos
             }
 
             System.out.println("Escriba la cantidad de dinero a cambiar: ");
