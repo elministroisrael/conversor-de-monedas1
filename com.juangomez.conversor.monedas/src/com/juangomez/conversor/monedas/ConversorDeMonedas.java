@@ -71,7 +71,6 @@ public class ConversorDeMonedas {
 
 
 
-
         } while (opcion != 7);
 
         lectura.close();
